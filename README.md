@@ -12,22 +12,6 @@
 API REST e interfaz web para gestionar series y sus episodios en una plataforma de streaming.  
 Implementa CRUD completo sobre ambos modelos con Spring Boot, JPA, Thymeleaf y MySQL en Docker.
 
----
-
-## Tecnologías
-
-| Tecnología | Versión |
-|---|---|
-| Java | 21 |
-| Spring Boot | 3.4.5 |
-| Spring Data JPA | — |
-| Thymeleaf | — |
-| MySQL | 8.0 (Docker) |
-| Lombok | — |
-| Maven | 3.9.x |
-
----
-
 ## Cómo ejecutar el proyecto
 
 ### Requisitos previos
@@ -245,15 +229,3 @@ server.port=8080
 Las tablas se crean automáticamente al arrancar la aplicación (`ddl-auto=update`).
 
 ---
-
-## Historial de commits
-
-| Commit | Descripción |
-|---|---|
-| `feat: configuración inicial pom.xml y docker-compose` | Dependencias y contenedor MySQL |
-| `feat: configuración de base de datos` | application.properties |
-| `feat: entidades Serie y Episodio con relación OneToMany` | Modelos JPA |
-| `feat: repositories Serie y Episodio` | Consultas personalizadas |
-| `feat: StreamingService con lógica de negocio` | Capa de servicio |
-| `feat: API REST CRUD para Series y Episodios` | ApiController |
-| `feat: WebController con vistas Thymeleaf` | WebController + templates |
