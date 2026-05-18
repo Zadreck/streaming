@@ -77,10 +77,13 @@ public class WebController {
 
     // ── EPISODIOS ────────────────────────────────────────────
 
-    @GetMapping("/episodios")
-    public String listarEpisodios(Model model) {
-        model.addAttribute("episodios", service.listarEpisodios());
-        return "episodios/lista";
+@GetMapping("/episodios")
+public String listarEpisodios(@RequestParam(required = false) Long serieId, Model model) {
+    model.addAttribute("episodios", serieId != null 
+        ? service.episodiosDeSerie(serieId) 
+        : service.listarEpisodios());
+    model.addAttribute("series", service.listarSeries());
+    return "episodios/lista";
     }
 
     @GetMapping("/episodios/nuevo")

@@ -3,6 +3,12 @@
 <head><meta charset="UTF-8"><title>Episodios</title></head>
 <body>
 <h1>Todos los Episodios</h1>
+<form method="get" action="/web/episodios">
+  <select name="serieId" onchange="this.form.submit()">
+    <option value="">-- Todas las series --</option>
+    <option th:each="s : ${series}" th:value="${s.id}" th:text="${s.titulo}"></option>
+  </select>
+</form>
 <a href="/web/episodios/nuevo">+ Nuevo Episodio</a>
 <table border="1">
   <thead>
