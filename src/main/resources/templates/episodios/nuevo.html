@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><title>Nuevo Episodio</title></head>
+<body>
+<h1>Nuevo Episodio</h1>
+<form method="post" action="/web/episodios/nuevo">
+  <label>Serie:
+    <select name="serieId" required>
+      <option th:each="s : ${series}" th:value="${s.id}" th:text="${s.titulo}"></option>
+    </select>
+  </label><br>
+  <label>Número: <input type="number" name="numero" required></label><br>
+  <label>Temporada: <input type="number" name="temporada" required></label><br>
+  <label>Título: <input type="text" name="titulo" required></label><br>
+  <label>Duración (min): <input type="number" name="duracionMin" required></label><br>
+  <label>Fecha emisión: <input type="date" name="fechaEmision" required></label><br>
+  <button type="submit">Guardar</button>
+  <a href="/web/episodios">Cancelar</a>
+</form>
+</body>
+</html>

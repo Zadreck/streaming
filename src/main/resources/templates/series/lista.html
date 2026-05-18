@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><title>Series</title></head>
+<body>
+<h1>Series</h1>
+
+<form method="get" action="/web/series">
+  <input type="text" name="genero" placeholder="Filtrar por género" th:value="${genero}">
+  <input type="text" name="plataforma" placeholder="Filtrar por plataforma" th:value="${plataforma}">
+  <button type="submit">Filtrar</button>
+  <a href="/web/series">Limpiar</a>
+</form>
+
+<a href="/web/series/nueva">+ Nueva Serie</a>
+
+<table border="1">
+  <thead>
+    <tr><th>ID</th><th>Título</th><th>Género</th><th>Plataforma</th><th>Año</th><th>Acciones</th></tr>
+  </thead>
+  <tbody>
+    <tr th:each="s : ${series}">
+      <td th:text="${s.id}"></td>
+      <td th:text="${s.titulo}"></td>
+      <td th:text="${s.genero}"></td>
+      <td th:text="${s.plataforma}"></td>
+      <td th:text="${s.anoEstreno}"></td>
+      <td>
+        <a th:href="@{/web/series/{id}(id=${s.id})}">Ver</a>
+        <a th:href="@{/web/series/editar/{id}(id=${s.id})}">Editar</a>
+        <form th:action="@{/web/series/borrar/{id}(id=${s.id})}" method="post" style="display:inline">
+          <button type="submit" onclick="return confirm('¿Borrar?')">Borrar</button>
+        </form>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>

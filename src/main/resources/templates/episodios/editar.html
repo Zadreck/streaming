@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><title>Editar Episodio</title></head>
+<body>
+<h1>Editar Episodio</h1>
+<form method="post" th:action="@{/web/episodios/editar/{id}(id=${episodio.id})}">
+  <label>Serie:
+    <select name="serieId" required>
+      <option th:each="s : ${series}"
+              th:value="${s.id}"
+              th:text="${s.titulo}"
+              th:selected="${s.id == episodio.serie.id}"></option>
+    </select>
+  </label><br>
+  <label>Número: <input type="number" name="numero" th:value="${episodio.numero}" required></label><br>
+  <label>Temporada: <input type="number" name="temporada" th:value="${episodio.temporada}" required></label><br>
+  <label>Título: <input type="text" name="titulo" th:value="${episodio.titulo}" required></label><br>
+  <label>Duración (min): <input type="number" name="duracionMin" th:value="${episodio.duracionMin}" required></label><br>
+  <label>Fecha emisión: <input type="date" name="fechaEmision" th:value="${episodio.fechaEmision}" required></label><br>
+  <button type="submit">Guardar cambios</button>
+  <a href="/web/episodios">Cancelar</a>
+</form>
+</body>
+</html>

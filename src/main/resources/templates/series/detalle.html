@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><title>Detalle Serie</title></head>
+<body>
+<h1 th:text="${serie.titulo}"></h1>
+<p>Género: <span th:text="${serie.genero}"></span></p>
+<p>Plataforma: <span th:text="${serie.plataforma}"></span></p>
+<p>Año estreno: <span th:text="${serie.anoEstreno}"></span></p>
+
+<h2>Episodios</h2>
+<a th:href="@{/web/episodios/nuevo}">+ Nuevo Episodio</a>
+<table border="1">
+  <thead>
+    <tr><th>Nº</th><th>Temporada</th><th>Título</th><th>Duración</th><th>Emisión</th><th>Acciones</th></tr>
+  </thead>
+  <tbody>
+    <tr th:each="e : ${episodios}">
+      <td th:text="${e.numero}"></td>
+      <td th:text="${e.temporada}"></td>
+      <td th:text="${e.titulo}"></td>
+      <td th:text="${e.duracionMin} + ' min'"></td>
+      <td th:text="${e.fechaEmision}"></td>
+      <td>
+        <a th:href="@{/web/episodios/editar/{id}(id=${e.id})}">Editar</a>
+        <form th:action="@{/web/episodios/borrar/{id}(id=${e.id})}" method="post" style="display:inline">
+          <button type="submit" onclick="return confirm('¿Borrar?')">Borrar</button>
+        </form>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<a href="/web/series">← Volver</a>
+</body>
+</html>
