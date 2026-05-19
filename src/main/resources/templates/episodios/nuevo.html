@@ -1,21 +1,51 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head><meta charset="UTF-8"><title>Nuevo Episodio</title></head>
+<head>
+  <meta charset="UTF-8"><title>Nuevo Episodio</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
 <body>
-<h1>Nuevo Episodio</h1>
-<form method="post" action="/web/episodios/nuevo">
-  <label>Serie:
-    <select name="serieId" required>
-      <option th:each="s : ${series}" th:value="${s.id}" th:text="${s.titulo}"></option>
-    </select>
-  </label><br>
-  <label>Número: <input type="number" name="numero" required></label><br>
-  <label>Temporada: <input type="number" name="temporada" required></label><br>
-  <label>Título: <input type="text" name="titulo" required></label><br>
-  <label>Duración (min): <input type="number" name="duracionMin" required></label><br>
-  <label>Fecha emisión: <input type="date" name="fechaEmision" required></label><br>
-  <button type="submit">Guardar</button>
-  <a href="/web/episodios">Cancelar</a>
-</form>
+<nav>
+  <span class="brand">Streaming</span>
+  <a href="/web/series">Series</a>
+  <a href="/web/episodios">Episodios</a>
+</nav>
+<div class="container">
+  <h1>Nuevo Episodio</h1>
+  <div class="card">
+    <form method="post" action="/web/episodios/nuevo">
+      <div class="form-group">
+        <label>Serie</label>
+        <select name="serieId" required>
+          <option th:each="s : ${series}" th:value="${s.id}" th:text="${s.titulo}"></option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Temporada</label>
+        <input type="number" name="temporada" required>
+      </div>
+      <div class="form-group">
+        <label>Número</label>
+        <input type="number" name="numero" required>
+      </div>
+      <div class="form-group">
+        <label>Título</label>
+        <input type="text" name="titulo" required>
+      </div>
+      <div class="form-group">
+        <label>Duración (min)</label>
+        <input type="number" name="duracionMin" required>
+      </div>
+      <div class="form-group">
+        <label>Fecha emisión</label>
+        <input type="date" name="fechaEmision" required>
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="btn btn-success">Guardar</button>
+        <a href="/web/episodios" class="btn btn-secondary">Cancelar</a>
+      </div>
+    </form>
+  </div>
+</div>
 </body>
 </html>

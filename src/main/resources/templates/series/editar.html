@@ -1,15 +1,41 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head><meta charset="UTF-8"><title>Editar Serie</title></head>
+<head>
+  <meta charset="UTF-8"><title>Editar Serie</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
 <body>
-<h1>Editar Serie</h1>
-<form method="post" th:action="@{/web/series/editar/{id}(id=${serie.id})}">
-  <label>Título: <input type="text" name="titulo" th:value="${serie.titulo}" required></label><br>
-  <label>Género: <input type="text" name="genero" th:value="${serie.genero}" required></label><br>
-  <label>Plataforma: <input type="text" name="plataforma" th:value="${serie.plataforma}" required></label><br>
-  <label>Año estreno: <input type="number" name="anoEstreno" th:value="${serie.anoEstreno}" required></label><br>
-  <button type="submit">Guardar cambios</button>
-  <a href="/web/series">Cancelar</a>
-</form>
+<nav>
+  <span class="brand">Streaming</span>
+  <a href="/web/series">Series</a>
+  <a href="/web/episodios">Episodios</a>
+</nav>
+<div class="container">
+  <h1>Editar Serie</h1>
+  <div class="card">
+    <form method="post" th:action="@{/web/series/editar/{id}(id=${serie.id})}">
+      <div class="form-group">
+        <label>Título</label>
+        <input type="text" name="titulo" th:value="${serie.titulo}" required>
+      </div>
+      <div class="form-group">
+        <label>Género</label>
+        <input type="text" name="genero" th:value="${serie.genero}" required>
+      </div>
+      <div class="form-group">
+        <label>Plataforma</label>
+        <input type="text" name="plataforma" th:value="${serie.plataforma}" required>
+      </div>
+      <div class="form-group">
+        <label>Año estreno</label>
+        <input type="number" name="anoEstreno" th:value="${serie.anoEstreno}" required>
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Guardar cambios</button>
+        <a href="/web/series" class="btn btn-secondary">Cancelar</a>
+      </div>
+    </form>
+  </div>
+</div>
 </body>
 </html>

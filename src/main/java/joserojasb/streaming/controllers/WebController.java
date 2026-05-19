@@ -131,4 +131,9 @@ public String listarEpisodios(@RequestParam(required = false) Long serieId, Mode
         service.eliminarEpisodio(id);
         return "redirect:/web/episodios";
     }
+
+    @GetMapping("/")
+    public String inicio() {
+    return "redirect:/web/series";
+    }
 }

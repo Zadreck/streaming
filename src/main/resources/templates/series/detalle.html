@@ -1,34 +1,62 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head><meta charset="UTF-8"><title>Detalle Serie</title></head>
+<head>
+  <meta charset="UTF-8"><title>Detalle Serie</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
 <body>
-<h1 th:text="${serie.titulo}"></h1>
-<p>Género: <span th:text="${serie.genero}"></span></p>
-<p>Plataforma: <span th:text="${serie.plataforma}"></span></p>
-<p>Año estreno: <span th:text="${serie.anoEstreno}"></span></p>
-
-<h2>Episodios</h2>
-<a th:href="@{/web/episodios/nuevo}">+ Nuevo Episodio</a>
-<table border="1">
-  <thead>
-    <tr><th>Nº</th><th>Temporada</th><th>Título</th><th>Duración</th><th>Emisión</th><th>Acciones</th></tr>
-  </thead>
-  <tbody>
-    <tr th:each="e : ${episodios}">
-      <td th:text="${e.numero}"></td>
-      <td th:text="${e.temporada}"></td>
-      <td th:text="${e.titulo}"></td>
-      <td th:text="${e.duracionMin} + ' min'"></td>
-      <td th:text="${e.fechaEmision}"></td>
-      <td>
-        <a th:href="@{/web/episodios/editar/{id}(id=${e.id})}">Editar</a>
-        <form th:action="@{/web/episodios/borrar/{id}(id=${e.id})}" method="post" style="display:inline">
-          <button type="submit" onclick="return confirm('¿Borrar?')">Borrar</button>
-        </form>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<a href="/web/series">← Volver</a>
+<nav>
+  <span class="brand">Streaming</span>
+  <a href="/web/series">Series</a>
+  <a href="/web/episodios">Episodios</a>
+</nav>
+<div class="container">
+  <h1 th:text="${serie.titulo}"></h1>
+  <div class="card">
+    <div class="info-grid">
+      <div class="info-item">
+        <div class="lbl">Género</div>
+        <div class="val" th:text="${serie.genero}"></div>
+      </div>
+      <div class="info-item">
+        <div class="lbl">Plataforma</div>
+        <div class="val"><span class="badge" th:text="${serie.plataforma}"></span></div>
+      </div>
+      <div class="info-item">
+        <div class="lbl">Año estreno</div>
+        <div class="val" th:text="${serie.anoEstreno}"></div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+      <h2 style="margin:0">Episodios</h2>
+      <a th:href="@{/web/episodios/nuevo}" class="btn btn-success btn-sm">+ Nuevo Episodio</a>
+    </div>
+    <table>
+      <thead>
+        <tr><th>Temp.</th><th>Nº</th><th>Título</th><th>Duración</th><th>Emisión</th><th>Acciones</th></tr>
+      </thead>
+      <tbody>
+        <tr th:each="e : ${episodios}">
+          <td th:text="${e.temporada}"></td>
+          <td th:text="${e.numero}"></td>
+          <td th:text="${e.titulo}"></td>
+          <td th:text="${e.duracionMin} + ' min'"></td>
+          <td th:text="${e.fechaEmision}"></td>
+          <td>
+            <div class="actions">
+              <a th:href="@{/web/episodios/editar/{id}(id=${e.id})}" class="btn btn-primary btn-sm">Editar</a>
+              <form th:action="@{/web/episodios/borrar/{id}(id=${e.id})}" method="post">
+                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Borrar?')">Borrar</button>
+              </form>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <a href="/web/series" class="btn btn-secondary">← Volver</a>
+</div>
 </body>
 </html>

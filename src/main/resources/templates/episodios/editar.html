@@ -1,24 +1,54 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head><meta charset="UTF-8"><title>Editar Episodio</title></head>
+<head>
+  <meta charset="UTF-8"><title>Editar Episodio</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
 <body>
-<h1>Editar Episodio</h1>
-<form method="post" th:action="@{/web/episodios/editar/{id}(id=${episodio.id})}">
-  <label>Serie:
-    <select name="serieId" required>
-      <option th:each="s : ${series}"
-              th:value="${s.id}"
-              th:text="${s.titulo}"
-              th:selected="${s.id == episodio.serie.id}"></option>
-    </select>
-  </label><br>
-  <label>Número: <input type="number" name="numero" th:value="${episodio.numero}" required></label><br>
-  <label>Temporada: <input type="number" name="temporada" th:value="${episodio.temporada}" required></label><br>
-  <label>Título: <input type="text" name="titulo" th:value="${episodio.titulo}" required></label><br>
-  <label>Duración (min): <input type="number" name="duracionMin" th:value="${episodio.duracionMin}" required></label><br>
-  <label>Fecha emisión: <input type="date" name="fechaEmision" th:value="${episodio.fechaEmision}" required></label><br>
-  <button type="submit">Guardar cambios</button>
-  <a href="/web/episodios">Cancelar</a>
-</form>
+<nav>
+  <span class="brand">Streaming</span>
+  <a href="/web/series">Series</a>
+  <a href="/web/episodios">Episodios</a>
+</nav>
+<div class="container">
+  <h1>Editar Episodio</h1>
+  <div class="card">
+    <form method="post" th:action="@{/web/episodios/editar/{id}(id=${episodio.id})}">
+      <div class="form-group">
+        <label>Serie</label>
+        <select name="serieId" required>
+          <option th:each="s : ${series}"
+                  th:value="${s.id}"
+                  th:text="${s.titulo}"
+                  th:selected="${s.id == episodio.serie.id}"></option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Temporada</label>
+        <input type="number" name="temporada" th:value="${episodio.temporada}" required>
+      </div>
+      <div class="form-group">
+        <label>Número</label>
+        <input type="number" name="numero" th:value="${episodio.numero}" required>
+      </div>
+      <div class="form-group">
+        <label>Título</label>
+        <input type="text" name="titulo" th:value="${episodio.titulo}" required>
+      </div>
+      <div class="form-group">
+        <label>Duración (min)</label>
+        <input type="number" name="duracionMin" th:value="${episodio.duracionMin}" required>
+      </div>
+      <div class="form-group">
+        <label>Fecha emisión</label>
+        <input type="date" name="fechaEmision" th:value="${episodio.fechaEmision}" required>
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Guardar cambios</button>
+        <a href="/web/episodios" class="btn btn-secondary">Cancelar</a>
+      </div>
+    </form>
+  </div>
+</div>
 </body>
 </html>
