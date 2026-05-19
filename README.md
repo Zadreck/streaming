@@ -71,7 +71,6 @@ La aplicación arranca en **http://localhost:8080**
 |---|---|
 | http://localhost:8080/web/series | Listado de series (con filtro) |
 | http://localhost:8080/web/series/nueva | Crear nueva serie |
-| http://localhost:8080/web/series/{id} | Ver detalle + episodios de una serie |
 | http://localhost:8080/web/episodios | Listado de todos los episodios |
 | http://localhost:8080/web/episodios/nuevo | Crear nuevo episodio |
 
