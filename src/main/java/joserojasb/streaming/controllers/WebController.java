@@ -66,14 +66,16 @@ public class WebController {
         return "redirect:/web/series";
     }
 
-    @GetMapping("/series/{id}")
-    public String detalleSerie(@PathVariable Long id, Model model) {
-        service.buscarSerie(id).ifPresent(s -> {
+@GetMapping("/series/{id}")
+public String detalleSerie(@PathVariable Long id, Model model) {
+    return service.buscarSerie(id)
+        .map(s -> {
             model.addAttribute("serie", s);
             model.addAttribute("episodios", service.episodiosDeSerie(id));
-        });
-        return "series/detalle";
-    }
+            return "series/detalle";
+        })
+        .orElse("redirect:/web/series");
+}
 
     // ── EPISODIOS ────────────────────────────────────────────
 
@@ -132,8 +134,5 @@ public String listarEpisodios(@RequestParam(required = false) Long serieId, Mode
         return "redirect:/web/episodios";
     }
 
-    @GetMapping("/")
-    public String inicio() {
-    return "redirect:/web/series";
-    }
+
 }
