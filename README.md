@@ -51,15 +51,7 @@ docker ps
 
 ### 3. Arrancar la aplicación
 
-```bash
-./mvnw spring-boot:run
-```
-
-En Windows:
-
-```bash
-mvnw.cmd spring-boot:run
-```
+mvn spring-boot:run
 
 La aplicación arranca en **http://localhost:8080**
 
