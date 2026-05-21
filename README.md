@@ -176,6 +176,7 @@ src/main/java/joserojasb/streaming/
 │   └── StreamingService.java
 └── controllers/
     ├── ApiController.java   (@RestController → /api/...)
+    ├── HomeController.java
     └── WebController.java   (@Controller    → /web/...)
 
 src/main/resources/
